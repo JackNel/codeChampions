@@ -6,6 +6,7 @@
     .factory('PMService', function($http, $location, _){
       var sendMessageUrl = '/newPM';
       var getPMUrl = '/myPM';
+      var readUrl = '/read/';
 
       var getPM = function(){
         return $http.get(getPMUrl);
@@ -18,10 +19,15 @@
         var obj = {messageText: replyMessage, replyUser: {username: toName}, replyId: Id};
         return $http.post(sendMessageUrl, obj);
       };
+      var markRead = function(id){
+        return $http.post(readUrl + id);
+      };
+
       return{
           getPM: getPM,
           sendNewMessage: sendNewMessage,
-          sendReply: sendReply
+          sendReply: sendReply,
+          markRead: markRead
       };
     });
 }());

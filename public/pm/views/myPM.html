@@ -16,16 +16,16 @@
   </div>
 </section>
 <article ng-repeat="pm in PMCtrl.pm">
-  <h3 ng-click="showChain = !showChain">{{pm.title}}
+  <h3 ng-click="showChain = !showChain; PMCtrl.markRead(pm.id)">{{pm.title}}
   </h3>
   <section ng-show="showChain">
     <div class="row">
-      <div class="col-xs-10"><img ng-src="../../images/avatars/{{pm.user.avatar}}"> {{pm.user.username}}: {{pm.messageText}}
+      <div class="col-xs-10"><img ng-src="../../images/avatars/{{pm.user.avatar}}"> {{pm.user.username}} ({{pm.messageTime}}): {{pm.messageText}}
       </div>
     </div>
   <section ng-repeat="reply in pm.replies | orderBy: 'id'">
     <div class="row">
-      <div class="col-xs-10"><img ng-src="../../images/avatars/{{reply.user.avatar}}">{{reply.user.username}}: {{reply.messageText}}
+      <div class="col-xs-10"><img ng-src="../../images/avatars/{{reply.user.avatar}}">{{reply.user.username}} ({{reply.messageTime}}): {{reply.messageText}}
       </div>
     </div>
   </section>

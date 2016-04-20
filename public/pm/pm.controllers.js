@@ -46,5 +46,10 @@
             vm.getPM();
           });
         };
+        vm.markRead = function(id){
+          PMService.markRead(id).then(function(res){
+            console.log("you read it like a champ");
+          });
+        };
       });
 }());
