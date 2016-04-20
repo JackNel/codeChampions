@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/codeChampions.iml" filepath="$PROJECT_DIR$/codeChampions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codeChampions.iml" filepath="$PROJECT_DIR$/.idea/modules/codeChampions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codeChampions_main.iml" filepath="$PROJECT_DIR$/.idea/modules/codeChampions_main.iml" group="codeChampions" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codeChampions_test.iml" filepath="$PROJECT_DIR$/.idea/modules/codeChampions_test.iml" group="codeChampions" />
     </modules>
   </component>
 </project>

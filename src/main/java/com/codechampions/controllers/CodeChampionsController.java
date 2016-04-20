@@ -4,6 +4,7 @@ import com.codechampions.entities.*;
 import com.codechampions.services.*;
 import com.codechampions.utils.PasswordHash;
 import com.fasterxml.jackson.annotation.JsonView;
+import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +18,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,8 +52,12 @@ public class CodeChampionsController {
     public String game3_2InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_IF_CODE_HERE\n}\nelse{\nPUT_ELSE_CODE_HERE\n}\n");
     public String game3_3InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_IF_CODE_HERE\n}\nelse if(PUT_ELSE_IF_CONDITION){\nPUT_ELSE_IF_CODE_HERE\n}\nelse{\nPUT_ELSE_CODE_HERE\n}");
 
+    Server dbui = null;
+
     @PostConstruct
-    public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, FileNotFoundException {
+    public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, FileNotFoundException, SQLException {
+        dbui = Server.createWebServer().start();
+
         User admin = users.findOneByUsername("Admin");
         if (admin == null) {
             admin = new User();
